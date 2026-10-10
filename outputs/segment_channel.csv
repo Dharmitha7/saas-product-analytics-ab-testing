@@ -1,0 +1,8 @@
+acquisition_channel,signups,activated_pct,paid_pct,w4_retention_pct,new_mrr_per_signup_usd,avg_mrr_usd
+referral,10609,38.7,15.4,35.2,12.82,83.0
+direct,15915,34.6,12.7,32.2,10.3,81.0
+unknown,2781,33.7,11.8,31.2,10.25,87.0
+organic_search,29768,33.8,11.9,31.4,9.61,81.0
+email_content,12748,32.0,11.2,29.2,9.34,83.0
+paid_search,21102,30.6,10.3,28.4,8.53,83.0
+paid_social,17493,27.3,7.9,25.1,6.49,83.0

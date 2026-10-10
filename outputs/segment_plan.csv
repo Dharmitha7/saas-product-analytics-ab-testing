@@ -1,0 +1,7 @@
+plan,billing_period,customers,avg_mrr_usd,activated_in_week1_pct,total_mrr_started
+Starter,annual,736,25.0,80.6,18142.0
+Starter,monthly,4240,29.0,82.1,122960.0
+Team,annual,1378,67.0,85.2,92533.0
+Team,monthly,5041,79.0,84.5,398239.0
+Business,annual,992,169.0,87.5,167797.0
+Business,monthly,1852,199.0,86.4,368548.0

@@ -1,0 +1,13 @@
+test_week,variant,users,activation_pct
+0,control,1444,32.34
+0,treatment,1489,36.2
+1,control,1384,31.72
+1,treatment,1497,35.8
+2,control,1381,33.09
+2,treatment,1358,33.43
+3,control,1509,32.34
+3,treatment,1549,37.57
+4,control,1578,33.27
+4,treatment,1543,33.18
+5,control,1501,32.98
+5,treatment,1537,37.15

@@ -1,0 +1,54 @@
+table mrr_monthly
+	lineageTag: ac2cc498-45be-575a-84d1-c0d9b757dab9
+
+	column month
+		dataType: string
+		sourceColumn: month
+		summarizeBy: none
+		lineageTag: 81813531-1d9f-5949-943a-d3128b801278
+
+	column customers_start
+		dataType: int64
+		sourceColumn: customers_start
+		summarizeBy: none
+		lineageTag: f1479dd6-4441-5f50-af42-6033e928fc23
+
+	column new_customers
+		dataType: int64
+		sourceColumn: new_customers
+		summarizeBy: none
+		lineageTag: 39a404ac-9a4f-5b8e-a1c6-be3be85dbdf8
+
+	column churned_customers
+		dataType: int64
+		sourceColumn: churned_customers
+		summarizeBy: none
+		lineageTag: 5283e842-a5ff-53dd-b586-da861d0d9d6b
+
+	column mrr_start
+		dataType: double
+		sourceColumn: mrr_start
+		summarizeBy: none
+		lineageTag: 3481631f-4e51-56fb-9aa9-b7cacc2fb602
+
+	column new_mrr
+		dataType: double
+		sourceColumn: new_mrr
+		summarizeBy: none
+		lineageTag: 7dd6e189-00b5-5d13-91fb-5beb16bf5f80
+
+	column churned_mrr
+		dataType: double
+		sourceColumn: churned_mrr
+		summarizeBy: none
+		lineageTag: 3d8705a3-2b9b-5861-8c09-83a642922d47
+
+	partition mrr_monthly = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "mrr_monthly.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"customers_start", Int64.Type}, {"new_customers", Int64.Type}, {"churned_customers", Int64.Type}, {"mrr_start", type number}, {"new_mrr", type number}, {"churned_mrr", type number}}, "en-US")
+				in
+				    Typed

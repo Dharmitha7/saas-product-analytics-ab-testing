@@ -1,0 +1,9 @@
+company_size,variant,users,activation_pct
+solo,control,3064,22.98
+solo,treatment,3101,25.09
+2-10,control,3521,35.98
+2-10,treatment,3623,39.72
+11-50,control,1537,41.77
+11-50,treatment,1620,43.4
+51+,control,675,38.22
+51+,treatment,629,43.56

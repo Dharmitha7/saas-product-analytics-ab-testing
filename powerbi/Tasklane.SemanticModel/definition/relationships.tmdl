@@ -1,0 +1,3 @@
+relationship 4c671e63-a3b4-526b-ac23-830d5d85c1ac
+	fromColumn: fact_user.signup_date
+	toColumn: dim_date.date

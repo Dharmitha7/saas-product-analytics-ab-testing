@@ -1,0 +1,8 @@
+﻿# local environment
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+# generated data (rebuild with python/generate_data.py)
+data/*.parquet
+data/*.duckdb
+powerbi/**/.pbi/

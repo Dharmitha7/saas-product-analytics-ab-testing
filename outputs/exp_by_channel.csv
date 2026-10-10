@@ -1,0 +1,15 @@
+acquisition_channel,variant,users,activation_pct
+direct,control,1314,35.62
+direct,treatment,1278,38.65
+email_content,control,1021,32.03
+email_content,treatment,1051,36.35
+organic_search,control,2357,31.57
+organic_search,treatment,2468,36.87
+paid_search,control,1711,30.92
+paid_search,treatment,1811,33.57
+paid_social,control,1328,29.07
+paid_social,treatment,1271,29.5
+referral,control,848,40.68
+referral,treatment,863,39.28
+unknown,control,218,33.03
+unknown,treatment,231,37.23

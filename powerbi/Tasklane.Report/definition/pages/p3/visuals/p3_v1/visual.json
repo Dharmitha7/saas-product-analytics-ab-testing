@@ -1,0 +1,148 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "p3_v1",
+  "position": {
+    "x": 20,
+    "y": 60,
+    "width": 760,
+    "height": 280,
+    "z": 20,
+    "tabOrder": 20
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_user"
+                    }
+                  },
+                  "Property": "channel"
+                }
+              },
+              "queryRef": "fact_user.channel",
+              "nativeQueryRef": "channel"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Signups"
+                }
+              },
+              "queryRef": "_Measures.Signups",
+              "nativeQueryRef": "Signups"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Activation Rate"
+                }
+              },
+              "queryRef": "_Measures.Activation Rate",
+              "nativeQueryRef": "Activation Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Paid Conversion"
+                }
+              },
+              "queryRef": "_Measures.Paid Conversion",
+              "nativeQueryRef": "Paid Conversion"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "New MRR per Signup"
+                }
+              },
+              "queryRef": "_Measures.New MRR per Signup",
+              "nativeQueryRef": "New MRR per Signup"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "W4 Retention"
+                }
+              },
+              "queryRef": "_Measures.W4 Retention",
+              "nativeQueryRef": "W4 Retention"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "New MRR per Signup"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Acquisition channels'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

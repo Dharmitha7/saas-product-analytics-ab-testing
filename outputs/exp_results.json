@@ -1,0 +1,368 @@
+{
+  "baseline": 0.33166666666666667,
+  "mde": 0.025,
+  "n_arm_required": 5668,
+  "days_required": 27,
+  "n_arm_required_paid_1pt": 16494,
+  "srm_p": 0.18673859858419953,
+  "n_control": 8797,
+  "n_treatment": 8973,
+  "primary": {
+    "metric": "activated",
+    "control": 0.326361259520291,
+    "treatment": 0.355956759166388,
+    "diff": 0.029595499646097034,
+    "ci_lo": 0.015654618351413997,
+    "ci_hi": 0.043517441088311515,
+    "rel": 0.09068324987346421,
+    "rel_lo": 0.04695297202407267,
+    "rel_hi": 0.13628208047904344,
+    "z": 4.16010611351237,
+    "p": 3.180997681162097e-05
+  },
+  "secondary": [
+    {
+      "metric": "invited_48h",
+      "control": 0.12424690235307491,
+      "treatment": 0.16371336230914968,
+      "diff": 0.03946645995607477,
+      "ci_lo": 0.029159397184840414,
+      "ci_hi": 0.049767910060393716,
+      "rel": 0.31764542381847183,
+      "rel_lo": 0.2254875426688947,
+      "rel_hi": 0.4168432110145386,
+      "z": 7.4882856393145945,
+      "p": 6.977903667528364e-14,
+      "p_holm": 2.0933711002585093e-13
+    },
+    {
+      "metric": "paid_30d",
+      "control": 0.1143571672160964,
+      "treatment": 0.12548757383260895,
+      "diff": 0.011130406616512545,
+      "ci_lo": 0.0015743344116250085,
+      "ci_hi": 0.02068208669869267,
+      "rel": 0.09733020577083584,
+      "rel_lo": 0.013216973852099079,
+      "rel_hi": 0.18846335467143938,
+      "z": 2.2830039846017565,
+      "p": 0.022430133650228307,
+      "p_holm": 0.04486026730045661
+    },
+    {
+      "metric": "retained_w1",
+      "control": 0.3689894282141639,
+      "treatment": 0.3753482670232921,
+      "diff": 0.006358838809128187,
+      "ci_lo": -0.00785594252570629,
+      "ci_hi": 0.020567684429806814,
+      "rel": 0.017233119224861593,
+      "rel_lo": -0.02088630368069888,
+      "rel_hi": 0.05685188463991819,
+      "z": 0.87674099072685,
+      "p": 0.38062733689349126,
+      "p_holm": 0.38062733689349126
+    }
+  ],
+  "tickets": {
+    "rr": 0.9803856012481891,
+    "lo": 0.8436728206873618,
+    "hi": 1.1392519738182423,
+    "per_user_c": 0.038649539615778106,
+    "per_user_t": 0.03789145213418032
+  },
+  "g_tickets": false,
+  "g_w1": true,
+  "adjusted": {
+    "diff": 0.029266004383757687,
+    "lo": 0.015545018591545254,
+    "hi": 0.042986990175970116
+  },
+  "interaction": [
+    {
+      "dimension": "company_size",
+      "LR chi-square": 1.8262050596204062,
+      "df": 3,
+      "p": 0.6092490920089402,
+      "p (Bonferroni x4)": 1.0
+    },
+    {
+      "dimension": "acquisition_channel",
+      "LR chi-square": 8.815587844950642,
+      "df": 6,
+      "p": 0.18421798681034796,
+      "p (Bonferroni x4)": 0.7368719472413918
+    },
+    {
+      "dimension": "device",
+      "LR chi-square": 2.879649653164961,
+      "df": 2,
+      "p": 0.23696926576267777,
+      "p (Bonferroni x4)": 0.9478770630507111
+    },
+    {
+      "dimension": "test_week",
+      "LR chi-square": 8.074796739369049,
+      "df": 5,
+      "p": 0.15216132358828474,
+      "p (Bonferroni x4)": 0.608645294353139
+    }
+  ],
+  "segments": [
+    {
+      "dimension": "company_size",
+      "segment": "11-50",
+      "n": 3157,
+      "control": 0.4176968119713728,
+      "treatment": 0.4339506172839506,
+      "diff": 0.016253805312577807,
+      "lo": -0.01824526498005874,
+      "hi": 0.050678224608333024
+    },
+    {
+      "dimension": "company_size",
+      "segment": "2-10",
+      "n": 7144,
+      "control": 0.35984095427435386,
+      "treatment": 0.3971846536019873,
+      "diff": 0.03734369932763343,
+      "lo": 0.01484732731737446,
+      "hi": 0.05977899191852427
+    },
+    {
+      "dimension": "company_size",
+      "segment": "51+",
+      "n": 1304,
+      "control": 0.38222222222222224,
+      "treatment": 0.4356120826709062,
+      "diff": 0.053389860448683935,
+      "lo": 2.0199162836742612e-05,
+      "hi": 0.10641109731951001
+    },
+    {
+      "dimension": "company_size",
+      "segment": "solo",
+      "n": 6165,
+      "control": 0.2297650130548303,
+      "treatment": 0.2508868107062238,
+      "diff": 0.02112179765139352,
+      "lo": -0.00021423125224052236,
+      "hi": 0.042426158209631096
+    },
+    {
+      "dimension": "acquisition_channel",
+      "segment": "direct",
+      "n": 2592,
+      "control": 0.3561643835616438,
+      "treatment": 0.3865414710485133,
+      "diff": 0.03037708748686946,
+      "lo": -0.0068143023428595545,
+      "hi": 0.06747281287110055
+    },
+    {
+      "dimension": "acquisition_channel",
+      "segment": "email content",
+      "n": 2072,
+      "control": 0.32027424094025464,
+      "treatment": 0.36346336822074216,
+      "diff": 0.043189127280487516,
+      "lo": 0.002328567564185563,
+      "hi": 0.08381335382061919
+    },
+    {
+      "dimension": "acquisition_channel",
+      "segment": "organic search",
+      "n": 4825,
+      "control": 0.31565549427238015,
+      "treatment": 0.3687196110210697,
+      "diff": 0.05306411674868955,
+      "lo": 0.026287589703099964,
+      "hi": 0.07971007835609176
+    },
+    {
+      "dimension": "acquisition_channel",
+      "segment": "paid search",
+      "n": 3522,
+      "control": 0.30917592051431914,
+      "treatment": 0.3357261181667587,
+      "diff": 0.026550197652439544,
+      "lo": -0.004348211874655696,
+      "hi": 0.05733210922780957
+    },
+    {
+      "dimension": "acquisition_channel",
+      "segment": "paid social",
+      "n": 2599,
+      "control": 0.29066265060240964,
+      "treatment": 0.2950432730133753,
+      "diff": 0.004380622410965651,
+      "lo": -0.03056850981741288,
+      "hi": 0.03937191904673569
+    },
+    {
+      "dimension": "acquisition_channel",
+      "segment": "referral",
+      "n": 1711,
+      "control": 0.4068396226415094,
+      "treatment": 0.3928157589803013,
+      "diff": -0.014023863661208114,
+      "lo": -0.06031505469627395,
+      "hi": 0.03233571419698361
+    },
+    {
+      "dimension": "acquisition_channel",
+      "segment": "unknown",
+      "n": 449,
+      "control": 0.3302752293577982,
+      "treatment": 0.3722943722943723,
+      "diff": 0.042019142936574105,
+      "lo": -0.046211348654348186,
+      "hi": 0.1290430042353758
+    },
+    {
+      "dimension": "device",
+      "segment": "desktop",
+      "n": 12791,
+      "control": 0.32913584133480245,
+      "treatment": 0.36672879776328055,
+      "diff": 0.0375929564284781,
+      "lo": 0.021086196560467924,
+      "hi": 0.05406848937019211
+    },
+    {
+      "dimension": "device",
+      "segment": "mobile",
+      "n": 3583,
+      "control": 0.3003997715591091,
+      "treatment": 0.3089519650655022,
+      "diff": 0.008552193506393135,
+      "lo": -0.02160315945277937,
+      "hi": 0.03864628872809358
+    },
+    {
+      "dimension": "device",
+      "segment": "tablet",
+      "n": 1396,
+      "control": 0.3665223665223665,
+      "treatment": 0.37980085348506404,
+      "diff": 0.013278486962697511,
+      "lo": -0.03739644278925706,
+      "hi": 0.06383669307326469
+    }
+  ],
+  "weekly": [
+    {
+      "dimension": "test_week",
+      "segment": "0",
+      "n": 2933,
+      "control": 0.3234072022160665,
+      "treatment": 0.36198791134989927,
+      "diff": 0.03858070913383277,
+      "lo": 0.004217592042023398,
+      "hi": 0.07279023682185565,
+      "week": 1
+    },
+    {
+      "dimension": "test_week",
+      "segment": "1",
+      "n": 2881,
+      "control": 0.3171965317919075,
+      "treatment": 0.3580494321977288,
+      "diff": 0.04085290040582129,
+      "lo": 0.006273577682794511,
+      "hi": 0.07522465805384512,
+      "week": 2
+    },
+    {
+      "dimension": "test_week",
+      "segment": "2",
+      "n": 2739,
+      "control": 0.33091962346125997,
+      "treatment": 0.33431516936671574,
+      "diff": 0.0033955459054557657,
+      "lo": -0.03185565543236037,
+      "hi": 0.03865163947037768,
+      "week": 3
+    },
+    {
+      "dimension": "test_week",
+      "segment": "3",
+      "n": 3058,
+      "control": 0.32339297548045065,
+      "treatment": 0.3757262750161394,
+      "diff": 0.05233329953568877,
+      "lo": 0.01852820734962038,
+      "hi": 0.08595054408802456,
+      "week": 4
+    },
+    {
+      "dimension": "test_week",
+      "segment": "4",
+      "n": 3121,
+      "control": 0.33269961977186313,
+      "treatment": 0.3318211276733636,
+      "diff": -0.0008784920984995503,
+      "lo": -0.03388918597816819,
+      "hi": 0.03215441804494533,
+      "week": 5
+    },
+    {
+      "dimension": "test_week",
+      "segment": "5",
+      "n": 3038,
+      "control": 0.32978014656895405,
+      "treatment": 0.3715029277813923,
+      "diff": 0.041722781212438276,
+      "lo": 0.007780240971423054,
+      "hi": 0.07551217165906354,
+      "week": 6
+    }
+  ],
+  "trend_p": 0.661241181077077,
+  "planned_sample_date": "2025-11-09",
+  "mde_activation_80": 0.01995590838717043,
+  "mde_paid_80": 0.01378360264199291,
+  "power_paid_1pt": 0.5343325464103845,
+  "impact": {
+    "signups_pm": 13411.333333333334,
+    "extra_activated_pm": 396.915110920356,
+    "extra_act_lo": 209.94930491693026,
+    "extra_act_hi": 583.6269082490419,
+    "d_mrr_per_signup": 1.0143892402454604,
+    "d_mrr_lo": 0.009655616685656954,
+    "d_mrr_hi": 2.019122863805264,
+    "extra_mrr_pm": 13604.312230678619,
+    "extra_mrr_pm_lo": 129.49469391024064,
+    "extra_mrr_pm_hi": 27079.129767447,
+    "one_pt_value_mrr_pm": 2972.0855800000004
+  },
+  "criteria": [
+    {
+      "criterion": "Primary: activation lift is statistically significant (p < 0.05)",
+      "status": "Met",
+      "evidence": "p = 3.2e-05"
+    },
+    {
+      "criterion": "Primary: lift clears the 1.0 pt practical bar (CI lower bound > +1.0 pt)",
+      "status": "Met",
+      "evidence": "point +2.96, CI lower bound +1.57 pts"
+    },
+    {
+      "criterion": "Guardrail: support tickets rise by less than 10% (CI upper bound < 1.10)",
+      "status": "Inconclusive",
+      "evidence": "rate ratio 0.98, CI upper bound 1.14"
+    },
+    {
+      "criterion": "Guardrail: week-2 activity does not fall more than 1 pt",
+      "status": "Met",
+      "evidence": "difference +0.64 pts, CI lower bound -0.79"
+    },
+    {
+      "criterion": "Downstream: paid conversion shows no sign of harm (CI lower bound > -0.5 pt)",
+      "status": "Met",
+      "evidence": "difference +1.11 pts, CI lower bound +0.16"
+    }
+  ],
+  "ship": true,
+  "verdict": "SHIP VIA STAGED ROLLOUT, monitoring the inconclusive guardrail"
+}

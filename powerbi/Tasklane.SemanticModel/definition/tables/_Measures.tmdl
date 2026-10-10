@@ -1,0 +1,171 @@
+table _Measures
+	lineageTag: 6b6e8bd7-a4da-5a31-90b1-76c7a175500c
+
+	column Value
+		isHidden
+		dataType: int64
+		sourceColumn: [Value]
+		summarizeBy: none
+		lineageTag: d1a1f977-d466-5a29-aa7b-a0e7797d8199
+
+	measure Signups = COUNTROWS ( fact_user )
+		formatString: #,0
+		lineageTag: 5724aae0-b6d7-5ac5-b5aa-4933857e8919
+
+	measure 'Verified Users' = CALCULATE ( COUNTROWS ( fact_user ), fact_user[is_verified] = 1 )
+		formatString: #,0
+		lineageTag: b3481b56-3380-5a44-8283-d8c0d77ffe68
+
+	measure 'Project Users' = CALCULATE ( COUNTROWS ( fact_user ), fact_user[has_project] = 1 )
+		formatString: #,0
+		lineageTag: f443e459-a5b4-5b89-8e16-d3923875f070
+
+	measure 'Activated Users' = CALCULATE ( COUNTROWS ( fact_user ), fact_user[is_activated] = 1 )
+		formatString: #,0
+		lineageTag: d4e3ed8b-0310-5c2f-9baf-e2de08ce358a
+
+	measure 'Paid Users' = CALCULATE ( COUNTROWS ( fact_user ), fact_user[is_paid] = 1 )
+		formatString: #,0
+		lineageTag: 3109230e-7b65-582b-b541-3449c86faed0
+
+	measure 'Activation Rate' = DIVIDE ( [Activated Users], [Signups] )
+		formatString: 0.0%
+		lineageTag: 6ee79c1b-892e-55a5-9340-edb222d37226
+
+	measure 'Paid Conversion' = DIVIDE ( [Paid Users], [Signups] )
+		formatString: 0.0%
+		lineageTag: 9fb2094a-605d-509d-9133-549f68aad82f
+
+	measure 'Paid per Activated User' = DIVIDE ( CALCULATE ( [Paid Users], fact_user[is_activated] = 1 ), [Activated Users] )
+		formatString: 0.0%
+		lineageTag: 412f4f9b-e222-53eb-8cc1-906a0331fa2f
+
+	measure 'Funnel Users' =
+			SWITCH ( SELECTEDVALUE ( dim_funnel_stage[stage] ),
+			    "Signed up", [Signups], "Verified email", [Verified Users], "Created first project", [Project Users],
+			    "Activated", [Activated Users], "Paid", [Paid Users] )
+		formatString: #,0
+		lineageTag: 80466fc3-2c36-5f03-bb2a-d99f14b6a590
+
+	measure 'W1 Retention' = AVERAGE ( fact_user[w1_active] )
+		formatString: 0.0%
+		lineageTag: fd9ac3bf-17f7-5d73-9629-19f23ee1a928
+
+	measure 'W4 Retention' = AVERAGE ( fact_user[w4_active] )
+		formatString: 0.0%
+		lineageTag: 59cd5a62-1e3f-5497-899a-9ee3d3d0e887
+
+	measure 'W8 Retention' = AVERAGE ( fact_user[w8_active] )
+		formatString: 0.0%
+		lineageTag: 60b9db4e-7621-55f9-a6ef-45ebaa2bc8f1
+
+	measure 'Cohort Retention' = DIVIDE ( SUM ( cohort_retention_weekly[active_users] ), SUM ( cohort_retention_weekly[cohort_size] ) )
+		formatString: 0.0%
+		lineageTag: 9d6f86e8-72ea-5651-89ca-d1ddd1813170
+
+	measure 'New MRR per Signup' = DIVIDE ( SUM ( fact_user[mrr_usd] ), [Signups] )
+		formatString: $#,0.00
+		lineageTag: f3018cf7-3ef7-5a22-b6b2-8e2dfe570b1d
+
+	measure 'Avg MRR per Customer' = DIVIDE ( SUM ( fact_user[mrr_usd] ), [Paid Users] )
+		formatString: $#,0
+		lineageTag: a2f61ebc-5530-5e87-a899-7b409da8ab40
+
+	measure 'Customers Churned' = CALCULATE ( COUNTROWS ( fact_user ), fact_user[is_churned] = 1 )
+		formatString: #,0
+		lineageTag: 7713c439-6f93-511d-8065-ee8063eaece2
+
+	measure 'Customer Months' = SUM ( fact_user[customer_months] )
+		formatString: #,0
+		lineageTag: 1bc993db-1cc6-5e07-891f-2038628d9d1a
+
+	measure 'Monthly Churn Rate' = DIVIDE ( [Customers Churned], [Customer Months] )
+		formatString: 0.00%
+		lineageTag: 124e0958-b662-54f0-b59f-33f475c7d575
+
+	measure 'New MRR' = SUM ( mrr_monthly[new_mrr] )
+		formatString: $#,0
+		lineageTag: 45483071-7550-5302-85d7-85f929c086f9
+
+	measure 'Churned MRR' = SUM ( mrr_monthly[churned_mrr] )
+		formatString: $#,0
+		lineageTag: c8340456-96ec-5206-9feb-9b048b719510
+
+	measure 'Net New MRR' = [New MRR] - [Churned MRR]
+		formatString: $#,0
+		lineageTag: 30859670-d560-58db-9957-3ada4a613e1f
+
+	measure 'MRR Churn Rate' = DIVIDE ( [Churned MRR], SUM ( mrr_monthly[mrr_start] ) )
+		formatString: 0.0%
+		lineageTag: 798c8ba9-9c27-5822-aab1-091656deb0ea
+
+	measure 'Exp Users' = CALCULATE ( COUNTROWS ( fact_user ), fact_user[in_experiment] = 1 )
+		formatString: #,0
+		lineageTag: c368718c-8f82-59d7-ac15-e7361dae62b2
+
+	measure 'Exp Activated' = CALCULATE ( COUNTROWS ( fact_user ), fact_user[in_experiment] = 1, fact_user[is_activated] = 1 )
+		formatString: #,0
+		lineageTag: 3a37e383-a6cb-569c-af7f-aa8f56a8f8de
+
+	measure 'Exp Activation Rate' = DIVIDE ( [Exp Activated], [Exp Users] )
+		formatString: 0.0%
+		lineageTag: 484bef7e-ab5a-5782-abdd-97af280a446e
+
+	measure 'Exp Paid 30d Rate' = DIVIDE ( CALCULATE ( COUNTROWS ( fact_user ), fact_user[in_experiment] = 1, fact_user[is_paid_30d] = 1 ), [Exp Users] )
+		formatString: 0.0%
+		lineageTag: 0ce1f5f4-4079-5953-bc40-f2e6006a7b23
+
+	measure 'Control Activation Rate' = CALCULATE ( [Exp Activation Rate], fact_user[experiment_variant] = "control" )
+		formatString: 0.0%
+		lineageTag: 030e16f7-192d-5d80-9d69-dfcbf0a6190f
+
+	measure 'Treatment Activation Rate' = CALCULATE ( [Exp Activation Rate], fact_user[experiment_variant] = "treatment" )
+		formatString: 0.0%
+		lineageTag: d88aa12d-bd0f-5e96-8c14-2680aeab5b8c
+
+	measure 'Activation Lift' = [Treatment Activation Rate] - [Control Activation Rate]
+		formatString: +0.00%;-0.00%
+		lineageTag: f6fb1cb3-fd46-5c74-bdda-a42a5dd63bf0
+
+	measure 'Relative Lift' = DIVIDE ( [Activation Lift], [Control Activation Rate] )
+		formatString: +0.0%;-0.0%
+		lineageTag: e5df586c-240a-5ec7-96f8-49e144c63fdf
+
+	measure 'Lift Std Error' =
+			VAR pc = [Control Activation Rate]
+			VAR pt = [Treatment Activation Rate]
+			VAR nc = CALCULATE ( [Exp Users], fact_user[experiment_variant] = "control" )
+			VAR nt = CALCULATE ( [Exp Users], fact_user[experiment_variant] = "treatment" )
+			RETURN SQRT ( DIVIDE ( pc * ( 1 - pc ), nc ) + DIVIDE ( pt * ( 1 - pt ), nt ) )
+		formatString: 0.0000
+		lineageTag: 92bd1be9-c588-5ad4-9905-6488afe19fbd
+
+	measure 'Lift CI Low' = [Activation Lift] - 1.96 * [Lift Std Error]
+		formatString: +0.00%;-0.00%
+		lineageTag: 57a5844f-f66b-588c-bcae-0088dae97236
+
+	measure 'Lift CI High' = [Activation Lift] + 1.96 * [Lift Std Error]
+		formatString: +0.00%;-0.00%
+		lineageTag: fc386123-5af7-5dfb-b9b4-214f33e72ebb
+
+	measure 'Lift z-score' = DIVIDE ( [Activation Lift], [Lift Std Error] )
+		formatString: 0.00
+		lineageTag: 3c4ef788-3b69-5a65-ba5c-011582c868eb
+
+	measure 'Lift p-value' = 2 * ( 1 - NORM.S.DIST ( ABS ( [Lift z-score] ), TRUE ) )
+		formatString: 0.0000
+		lineageTag: 91d24ac5-84d3-5e47-928c-faeb71751fd2
+
+	measure 'Lift p-value Text' = IF ( [Lift p-value] < 0.0001, "< 0.0001", FORMAT ( [Lift p-value], "0.0000" ) )
+		formatString: @
+		lineageTag: 4a0b4fef-572d-5322-9091-92a07494e59e
+
+	measure 'Lift Summary' =
+			FORMAT ( [Activation Lift] * 100, "+0.00;-0.00" ) & " pts (95% CI " & FORMAT ( [Lift CI Low] * 100, "+0.00;-0.00" )
+			    & " to " & FORMAT ( [Lift CI High] * 100, "+0.00;-0.00" ) & ")"
+		formatString: @
+		lineageTag: baa851e1-c257-5784-884c-23238558a46c
+
+	partition _Measures = calculated
+		mode: import
+		source = {1}

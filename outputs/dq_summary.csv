@@ -1,0 +1,8 @@
+check_name,rows_affected,rows_total,treatment
+Raw users,125852,125852,Starting population
+Internal test accounts (tasklane.com),975,125852,Excluded from all analysis
+Users with no acquisition channel,3182,125852,Kept; labelled unknown
+Users with no country,1260,125852,Kept; labelled unknown
+Exact duplicate events,25635,4325298,Removed (kept first occurrence)
+Events stamped before signup (clock skew),557,4325298,Timestamp clamped to signup time
+Users assigned to both experiment arms,72,17981,Excluded from experiment readout

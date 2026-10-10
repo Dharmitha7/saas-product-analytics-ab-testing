@@ -1,0 +1,27 @@
+segment,week_idx,retention_pct
+Activated,0,100.0
+Activated,1,72.0
+Activated,2,68.83
+Activated,3,65.76
+Activated,4,63.83
+Activated,5,60.65
+Activated,6,57.8
+Activated,7,55.25
+Activated,8,52.82
+Activated,9,51.69
+Activated,10,49.11
+Activated,11,47.18
+Activated,12,45.67
+Not activated,0,46.69
+Not activated,1,20.36
+Not activated,2,16.73
+Not activated,3,15.18
+Not activated,4,14.11
+Not activated,5,13.02
+Not activated,6,11.77
+Not activated,7,10.95
+Not activated,8,10.02
+Not activated,9,9.24
+Not activated,10,8.62
+Not activated,11,8.16
+Not activated,12,7.46

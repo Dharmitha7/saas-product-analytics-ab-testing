@@ -1,0 +1,13 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+
+ref table fact_user
+ref table dim_date
+ref table cohort_retention_weekly
+ref table mrr_monthly
+ref table dim_funnel_stage
+ref table _Measures
+
+ref expression DataFolder

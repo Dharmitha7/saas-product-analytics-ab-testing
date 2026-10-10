@@ -1,0 +1,25 @@
+table dim_funnel_stage
+	lineageTag: 53844f16-62ed-5e49-a99f-f91974ccbf01
+
+	column stage
+		dataType: string
+		sourceColumn: stage
+		sortByColumn: stage_order
+		summarizeBy: none
+		lineageTag: ae16d5d5-9c92-5b7d-9a53-5eeba7a0472a
+
+	column stage_order
+		dataType: int64
+		sourceColumn: stage_order
+		summarizeBy: none
+		lineageTag: 69e6d790-f707-5d6a-83b0-d694d0aaedbf
+
+	partition dim_funnel_stage = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_funnel_stage.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"stage_order", Int64.Type}}, "en-US")
+				in
+				    Typed

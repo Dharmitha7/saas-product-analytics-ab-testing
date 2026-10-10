@@ -1,0 +1,13 @@
+﻿numpy
+pandas
+scipy
+statsmodels
+matplotlib
+duckdb
+pyarrow
+nbformat
+nbclient
+ipykernel
+playwright
+jinja2
+markdown

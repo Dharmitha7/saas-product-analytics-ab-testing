@@ -1,0 +1,47 @@
+table dim_date
+	dataCategory: Time
+	lineageTag: 47419f4d-545d-5a5f-b368-56e757e6c9dd
+
+	column date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		isKey
+		sourceColumn: date
+		summarizeBy: none
+		lineageTag: d4458610-e6f9-54b2-8a8b-7197259969fe
+
+	column week_start
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		sourceColumn: week_start
+		summarizeBy: none
+		lineageTag: 662f3018-e281-5058-8087-8b75986999fb
+
+	column month_start
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		sourceColumn: month_start
+		summarizeBy: none
+		lineageTag: c005ecc7-6624-58e7-a885-7fbd2dc52385
+
+	column month_label
+		dataType: string
+		sourceColumn: month_label
+		summarizeBy: none
+		lineageTag: 1727757d-0d3f-553e-bc1e-76b5ae7a82e1
+
+	column year
+		dataType: int64
+		sourceColumn: year
+		summarizeBy: none
+		lineageTag: 8e658104-712a-569f-a243-0bb5818a21d2
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_date.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"date", type date}, {"week_start", type date}, {"month_start", type date}, {"year", Int64.Type}}, "en-US")
+				in
+				    Typed

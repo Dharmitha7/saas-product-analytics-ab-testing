@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "p4_v2",
+  "position": {
+    "x": 400,
+    "y": 295,
+    "width": 390,
+    "height": 385,
+    "z": 120,
+    "tabOrder": 120
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_user"
+                    }
+                  },
+                  "Property": "test_week"
+                }
+              },
+              "queryRef": "fact_user.test_week",
+              "nativeQueryRef": "test_week"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Exp Activation Rate"
+                }
+              },
+              "queryRef": "_Measures.Exp Activation Rate",
+              "nativeQueryRef": "Exp Activation Rate"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_user"
+                    }
+                  },
+                  "Property": "experiment_variant"
+                }
+              },
+              "queryRef": "fact_user.experiment_variant",
+              "nativeQueryRef": "experiment_variant"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Activation by test week (noisy week to week)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

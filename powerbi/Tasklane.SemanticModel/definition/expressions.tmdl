@@ -1,0 +1,2 @@
+expression DataFolder = "C:\Users\dharm\saas-product-analytics-ab-testing\powerbi\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 282c92f5-ca48-5426-a318-59e6e7551fad

@@ -1,0 +1,7 @@
+device,variant,users,activation_pct
+desktop,control,6353,32.91
+desktop,treatment,6438,36.67
+mobile,control,1751,30.04
+mobile,treatment,1832,30.9
+tablet,control,693,36.65
+tablet,treatment,703,37.98

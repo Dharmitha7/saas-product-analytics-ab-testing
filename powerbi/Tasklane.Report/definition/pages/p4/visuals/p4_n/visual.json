@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "p4_n",
+  "position": {
+    "x": 20,
+    "y": 690,
+    "width": 1240,
+    "height": 24,
+    "z": 10,
+    "tabOrder": 10
+  },
+  "visual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Simulated experiment. Intervals here are Wald approximations; the notebook uses Newcombe intervals and adds guardrails, power and multiple-comparison control. Segment cuts are exploratory.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#6B7280"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

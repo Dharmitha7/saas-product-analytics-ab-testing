@@ -1,0 +1,7 @@
+plan,billing_period,customers_ever,customer_months,churn_events,monthly_churn_pct,avg_mrr_usd
+Starter,annual,736,4770,17,0.36,25.0
+Starter,monthly,4240,22751,1084,4.76,29.0
+Team,annual,1378,8811,19,0.22,67.0
+Team,monthly,5041,29069,859,2.96,79.0
+Business,annual,992,6276,12,0.19,169.0
+Business,monthly,1852,11037,152,1.38,199.0

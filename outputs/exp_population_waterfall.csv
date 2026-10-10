@@ -1,0 +1,6 @@
+step,description,users
+1,Assignment rows in raw table,18053
+2,Distinct users assigned,17981
+3,Less: users shown both arms,-72
+4,Less: internal test accounts (conflict-free),-139
+5,Analysis population,17770

@@ -1,0 +1,172 @@
+table fact_user
+	lineageTag: f4807d14-1073-5d0f-a28b-5761b928bf1d
+
+	column user_id
+		dataType: string
+		sourceColumn: user_id
+		summarizeBy: none
+		lineageTag: e34d1477-4f6f-570d-a068-6d3fe245310b
+
+	column signup_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		sourceColumn: signup_date
+		summarizeBy: none
+		lineageTag: 22a068bd-4233-515f-9f92-5553e0683ac4
+
+	column signup_month
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		sourceColumn: signup_month
+		summarizeBy: none
+		lineageTag: 2392958a-fe32-5d35-abdb-9640516a3da3
+
+	column channel
+		dataType: string
+		sourceColumn: channel
+		summarizeBy: none
+		lineageTag: b4c3e2db-09da-5780-9988-8424e0ec3fb4
+
+	column device
+		dataType: string
+		sourceColumn: device
+		summarizeBy: none
+		lineageTag: 49a3df27-a379-5426-ab8a-554136156ec2
+
+	column company_size
+		dataType: string
+		sourceColumn: company_size
+		summarizeBy: none
+		lineageTag: 90848132-66a6-53e0-9dcc-7220697e2e79
+
+	column engagement_tier
+		dataType: string
+		sourceColumn: engagement_tier
+		summarizeBy: none
+		lineageTag: 67a5962b-bdc2-5d79-8935-de642d368811
+
+	column is_verified
+		dataType: int64
+		sourceColumn: is_verified
+		summarizeBy: none
+		lineageTag: 24ade178-387b-5c46-bc1d-f6fb5ba3fff9
+
+	column has_project
+		dataType: int64
+		sourceColumn: has_project
+		summarizeBy: none
+		lineageTag: 052a4cee-7dcb-5ee8-857c-8c93655dd5fd
+
+	column is_activated
+		dataType: int64
+		sourceColumn: is_activated
+		summarizeBy: none
+		lineageTag: 764f51e0-979d-54a6-a7f4-e65d8644a586
+
+	column activation_status
+		dataType: string
+		sourceColumn: activation_status
+		summarizeBy: none
+		lineageTag: 1f1df849-4c1d-559f-992c-7a48bfb0be78
+
+	column is_paid
+		dataType: int64
+		sourceColumn: is_paid
+		summarizeBy: none
+		lineageTag: 212cc0d0-f371-5c34-8061-3783d32ca2d6
+
+	column plan
+		dataType: string
+		sourceColumn: plan
+		summarizeBy: none
+		lineageTag: 55dd0470-6d48-5fb3-9317-4a9cdfa4784b
+
+	column billing_period
+		dataType: string
+		sourceColumn: billing_period
+		summarizeBy: none
+		lineageTag: a9d0eebb-a5d5-55c5-a9af-47fbf80b5858
+
+	column mrr_usd
+		dataType: double
+		sourceColumn: mrr_usd
+		summarizeBy: none
+		lineageTag: 7c89bcd7-6aca-5cf1-b95d-2c6816f14b89
+
+	column sub_start_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		sourceColumn: sub_start_date
+		summarizeBy: none
+		lineageTag: e4827fec-41c1-50a6-83db-107b3e30e9df
+
+	column sub_end_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		sourceColumn: sub_end_date
+		summarizeBy: none
+		lineageTag: c2418ae1-47fd-5e84-800c-b29d036b4248
+
+	column is_churned
+		dataType: int64
+		sourceColumn: is_churned
+		summarizeBy: none
+		lineageTag: f9155f17-d864-52e3-ae4d-ffa12a67b957
+
+	column customer_months
+		dataType: int64
+		sourceColumn: customer_months
+		summarizeBy: none
+		lineageTag: 546c6ca6-6fa4-5b5b-aa69-9dcf61c81037
+
+	column w1_active
+		dataType: int64
+		sourceColumn: w1_active
+		summarizeBy: none
+		lineageTag: 7bdcac3c-7e0c-50ef-8bff-df7b21ecfde6
+
+	column w4_active
+		dataType: int64
+		sourceColumn: w4_active
+		summarizeBy: none
+		lineageTag: 1de31b2b-ae51-50ca-942a-02f64f16a6e7
+
+	column w8_active
+		dataType: int64
+		sourceColumn: w8_active
+		summarizeBy: none
+		lineageTag: c311aaed-60e8-5fe7-96e6-92db2e8cc53b
+
+	column experiment_variant
+		dataType: string
+		sourceColumn: experiment_variant
+		summarizeBy: none
+		lineageTag: 4e6e89cb-e8d6-59d6-9777-d9c1a200a105
+
+	column in_experiment
+		dataType: int64
+		sourceColumn: in_experiment
+		summarizeBy: none
+		lineageTag: 75a02a4b-03fa-5564-b512-30a581f1a185
+
+	column is_paid_30d
+		dataType: int64
+		sourceColumn: is_paid_30d
+		summarizeBy: none
+		lineageTag: 7d6dc81a-cd70-5174-93b2-9ec9a3cd350b
+
+	column test_week
+		dataType: int64
+		sourceColumn: test_week
+		summarizeBy: none
+		lineageTag: 81b983c1-e43b-5131-b0a1-01c0655b357a
+
+	partition fact_user = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_user.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"signup_date", type date}, {"signup_month", type date}, {"is_verified", Int64.Type}, {"has_project", Int64.Type}, {"is_activated", Int64.Type}, {"is_paid", Int64.Type}, {"mrr_usd", type number}, {"sub_start_date", type date}, {"sub_end_date", type date}, {"is_churned", Int64.Type}, {"customer_months", Int64.Type}, {"w1_active", Int64.Type}, {"w4_active", Int64.Type}, {"w8_active", Int64.Type}, {"in_experiment", Int64.Type}, {"is_paid_30d", Int64.Type}, {"test_week", Int64.Type}}, "en-US")
+				in
+				    Typed
