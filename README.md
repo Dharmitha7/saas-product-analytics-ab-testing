@@ -290,5 +290,3 @@ python python/build_memo_pdf.py         # memo PDF (needs Playwright's Chromium:
 python python/export_powerbi_data.py    # Power BI tables
 python powerbi/build_pbip.py            # regenerate the Power BI project
 ```
-
-**Skills shown:** window functions and cohort SQL (DuckDB), funnel and retention design, churn and MRR bridges, experiment design (power, SRM, guardrails, multiple-comparison control), Python statistics (statsmodels, scipy), Power BI data modelling and DAX, and stakeholder writing.
